@@ -136,7 +136,7 @@ router.post("/login", async (req, res, next) => {
       expiresIn: "7d", // ejemplo de 7 días.
     });
 
-    res.status(200).json({ authToken: authToken, role: `${role}` });
+    res.status(200).json({ authToken: authToken, role: foundUser.role });
   } catch (error) {
     next(error);
   }

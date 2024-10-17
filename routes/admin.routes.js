@@ -1,10 +1,10 @@
 const router = require("express").Router();
-
-const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { verifyToken, verifyAdmin } = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
+const Order = require("../models/Order.model");
+const User = require("../models/User.model");
 
 router.get("/product", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
@@ -14,7 +14,6 @@ router.get("/product", verifyToken, verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 router.post("/product", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
     const response = await Product.create(req.body);
@@ -23,7 +22,6 @@ router.post("/product", verifyToken, verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 router.put("/product/:id", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
     const response = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -34,7 +32,6 @@ router.put("/product/:id", verifyToken, verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 router.delete(
   "/product/:id",
   verifyToken,
@@ -48,10 +45,9 @@ router.delete(
     }
   }
 );
-
 router.put("/user/:id", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
-    const response = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    const response = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     res.status(202).json(response);
@@ -59,16 +55,14 @@ router.put("/user/:id", verifyToken, verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 router.get("/user", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
-    const response = await User.find({});
+    const response = await User.find({ role: "user" });
     res.status(200).json(response);
   } catch (error) {
     next(error);
   }
 });
-
 router.get("/user/:id", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
     const response = await User.findById(req.params.id);
@@ -77,11 +71,20 @@ router.get("/user/:id", verifyToken, verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 router.get("/order", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
     const response = await Order.find({});
     res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+});
+router.put("/order/:id", verifyToken, verifyAdmin, async (req, res, next) => {
+  try {
+    const response = await Order.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(202).json(response);
   } catch (error) {
     next(error);
   }

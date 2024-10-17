@@ -151,18 +151,4 @@ router.get("/verify", verifyToken, (req, res) => {
   //! con esto el frontend sabe quien es el usuario que está navegando por la web
 });
 
-// ejemplo de una llamada privada como /user/mi-perfil
-router.get("/user/perfil", verifyToken, (req, res) => {
-  // todas las llamadas que sean privada DEBERAN tener el verifyToken
-
-  res.json({ message: "aqui tienes tu información privada" });
-});
-
-// ejemplo de una llamada privada y de admin como /user/mi-perfil
-router.get("/user/admin", verifyToken, verifyAdmin, (req, res) => {
-  // todas las llamadas que sean privada DEBERAN tener el verifyToken
-
-  res.json({ message: "esta es tu data de admin" });
-});
-
 module.exports = router;

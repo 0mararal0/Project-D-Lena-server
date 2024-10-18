@@ -15,13 +15,13 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
-    phone: { type: String, required: true },
-    address: { type: String, required: true },
+    phone: { type: String },
+    address: { type: String },
     floor: { type: String },
     letter: { type: String },
     cp: { type: String },
-    city: { type: String, required: true },
-    province: { type: String, required: true },
+    city: { type: String },
+    province: { type: String },
     photo: {
       type: String,
       default:

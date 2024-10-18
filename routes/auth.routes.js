@@ -28,16 +28,7 @@ router.post("/signup", async (req, res, next) => {
   // Validaciones de backend
 
   // 1. Los campos son obligatorios
-  if (
-    !firstName ||
-    !lastName ||
-    !email ||
-    !password ||
-    !phone ||
-    !address ||
-    !city ||
-    !province
-  ) {
+  if (!firstName || !lastName || !email || !password) {
     res.status(400).json({ message: "Todos los campos son requeridos" });
     return; // esto detiene la funcion. Actuando como clausula de guardia.
   }

@@ -57,7 +57,7 @@ router.put("/user/:id", verifyToken, verifyAdmin, async (req, res, next) => {
 });
 router.get("/user", verifyToken, verifyAdmin, async (req, res, next) => {
   try {
-    const response = await User.find({ role: "user" });
+    const response = await User.find({});
     res.status(200).json(response);
   } catch (error) {
     next(error);

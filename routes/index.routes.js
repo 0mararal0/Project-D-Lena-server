@@ -22,4 +22,7 @@ router.get("/product/:product", async (req, res, next) => {
   }
 });
 
+const uploadRoutes = require("./upload.routes");
+router.use("/upload", uploadRoutes);
+
 module.exports = router;

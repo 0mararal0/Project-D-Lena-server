@@ -98,7 +98,7 @@ router.post("/login", async (req, res, next) => {
   try {
     // validar que ese usuario exista en la DB
     const foundUser = await User.findOne({ email: email });
-    console.log(foundUser);
+
     if (!foundUser) {
       res.status(400).json({ message: "Usuario no encontrado con ese email" });
       return;
@@ -119,6 +119,8 @@ router.post("/login", async (req, res, next) => {
       _id: foundUser._id,
       email: foundUser.email,
       role: foundUser.role,
+      photo: foundUser.photo,
+      firstName: foundUser.firstName,
       // cualquier propiedad que identifique al usuario o le de poder especiales debe estar acá
     };
 

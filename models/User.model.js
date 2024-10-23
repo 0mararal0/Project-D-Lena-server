@@ -25,7 +25,7 @@ const userSchema = new Schema(
     photo: {
       type: String,
       default:
-        "https://cdn.icon-icons.com/icons2/3868/PNG/512/profile_circle_icon_242774.png",
+        "https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2016/09/569465-whatsapp-que-tus-contactos-ponen-rana-perfil.jpg?tf=3840x",
     },
     isDeleted: { type: Boolean, default: false },
     role: { type: String, enum: ["admin", "user"], default: "user" },

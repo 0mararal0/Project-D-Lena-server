@@ -18,6 +18,7 @@ router.get("/profile/:id", verifyToken, async (req, res, next) => {
       city: 1,
       province: 1,
       photo: 1,
+      email: 1,
     });
     res.status(200).json(response);
   } catch (error) {

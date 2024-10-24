@@ -48,7 +48,9 @@ router.put("/profile/:id", verifyToken, async (req, res, next) => {
 });
 router.get("/order/:id", verifyToken, async (req, res, next) => {
   try {
-    const response = await Order.find({ usuario: req.params.id });
+    const response = await Order.find({ usuario: req.params.id }).populate(
+      "product"
+    );
     res.status(200).json(response);
   } catch (error) {
     next(error);

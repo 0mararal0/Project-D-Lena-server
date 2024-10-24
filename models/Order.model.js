@@ -11,6 +11,12 @@ const orderSchema = new Schema(
       enum: ["pendiente", "enviado", "entregado"],
       default: "pendiente",
     },
+    address: { type: String, required: true },
+    floor: { type: String },
+    letter: { type: String },
+    cp: { type: String },
+    city: { type: String, required: true },
+    province: { type: String },
     usuario: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
 

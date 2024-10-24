@@ -16,12 +16,6 @@ const userSchema = new Schema(
       required: [true, "Password is required."],
     },
     phone: { type: String },
-    address: { type: String },
-    floor: { type: String },
-    letter: { type: String },
-    cp: { type: String },
-    city: { type: String },
-    province: { type: String },
     photo: {
       type: String,
       default:

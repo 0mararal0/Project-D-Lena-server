@@ -13,6 +13,7 @@ router.use("/admin", adminRouter);
 
 const userRouter = require("./user.routes");
 router.use("/user", userRouter);
+
 router.get("/product/:product", async (req, res, next) => {
   try {
     const response = await Product.find({ category: req.params.product });
